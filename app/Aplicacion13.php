@@ -21,5 +21,5 @@ deberá determinar si ese valor se encuentra dentro del siguiente listado de pal
         return $retorno;
     }
 
-    validarPalabras("casa", 6);
+    echo validarPalabras("Recuperatorio", 14);
 ?>
