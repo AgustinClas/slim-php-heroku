@@ -12,21 +12,20 @@ class Usuario{
             $this->mail = $mail;
     }
     
-    static function _ValidarUsuario(){
+    function GuardarEnCSV(){
   
-        $usuarioIngresado = $_POST["usuario"];
-        $claveIngresada = $_POST["clave"];
-        $mailIngresado = $_POST["mail"];
+        $miArchivo = fopen("usuarios.csv", "a");
 
-        $usuarioNuevo = new Usuario($usuarioIngresado, $claveIngresada, $mailIngresado);
-        
+        $retorno = fwrite($miArchivo, $this->ToString());
 
-        return $usuarioNuevo;
+        fclose($miArchivo);
+
+        return $retorno;
                 
     }
 
     function ToString(){
-        return "Usuario: $this->usuario    Mail: $this->mail\n";
+        return "Usuario: $this->usuario,Mail: $this->mail\n";
     }
 
             

@@ -12,14 +12,21 @@ Hacer los métodos necesarios en la clase usuario
 */
 
     include "usuario.php";
-    $auxUsuario = usuario::_ValidarUsuario();
 
-    if($auxUsuario != null){
-        $miArchivo = fopen("usuarios.csv", "a");
+    if(isset($_POST["usuario"])){
         
-        if(fwrite($miArchivo, $auxUsuario->ToString()) != false && fclose($miArchivo) != false){
+        $nombre = $_POST["usuario"];
+        $clave = $_POST["clave"];
+        $mail = $_POST["mail"];
+        
+        $usuario1 = new usuario($nombre, $clave, $mail);
+
+        if($usuario1->GuardarEnCSV()){
             echo "Guardado exitoso<br>";
+        }else{
+            echo "No se pudo guardar el usuario<br>";
         }
     }
+    
 
 ?>
