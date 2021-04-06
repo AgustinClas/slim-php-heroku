@@ -26,7 +26,8 @@ Hacer los métodos necesarios en la clase usuario
         }else{
             echo "No se pudo guardar el usuario<br>";
         }
-    }
+    }else 
+        echo "Error";
     
 
 ?>
