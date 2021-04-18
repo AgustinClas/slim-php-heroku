@@ -68,8 +68,32 @@ class Usuario{
     function ToString(){
         return "Usuario: $this->usuario, Clave: $this->clave, Mail: $this->mail";
     }
+    /*
+    “Verificado” si el usuario existe y coincide la clave también.
+    “Error en los datos” si esta mal la clave.
+    “Usuario no registrado si no coincide el mail“
+    */
+    function VerificarUsuario(){
 
-            
+        $listado = Usuario::CargarListadoUsuarios("usuarios.csv");
+        $retorno;
+
+        foreach($listado as $usuario){
+            if($usuario->usuario == $this->usuario){
+                if($usuario->clave == $this->clave){
+                    $retorno = "Verificado";
+                }else{
+                    $retorno = "Error en los datos";
+                }
+
+                if($usuario->mail != $this->mail){
+                    $retorno = "Usuario no regristrado";
+                }
+            }
+        }
+
+        return $retorno;
+    }
 
 
 }
